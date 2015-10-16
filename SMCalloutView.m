@@ -384,7 +384,7 @@ NSTimeInterval const kSMCalloutViewRepositionDelayForUIScrollView = 1.0/3.0;
     if (self.popupCancelled) return;
 
     // now we want to mask our contents to our background view (if requested) to match the iOS 7 style
-    self.containerView.layer.mask = self.backgroundView.contentMask;
+//    self.containerView.layer.mask = self.backgroundView.contentMask;
 
     // if we need to delay, we don't want to be visible while we're delaying, so hide us in preparation for our popup
     self.hidden = YES;
@@ -604,17 +604,17 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
         // The hierarchy and view/layer values were discovered by inspecting map kit using Reveal.app
         
         self.containerView = [UIView new];
-        self.containerView.backgroundColor = [UIColor whiteColor];
-        self.containerView.alpha = 0.96;
-        self.containerView.layer.cornerRadius = 8;
-        self.containerView.layer.shadowRadius = 30;
-        self.containerView.layer.shadowOpacity = 0.1;
+        self.containerView.backgroundColor = [UIColor clearColor];
+//        self.containerView.alpha = 0.96;
+//        self.containerView.layer.cornerRadius = 8;
+//        self.containerView.layer.shadowRadius = 30;
+//        self.containerView.layer.shadowOpacity = 0.1;
         
-        self.containerBorderView = [UIView new];
-        self.containerBorderView.layer.borderColor = [UIColor colorWithWhite:0 alpha:0.1].CGColor;
-        self.containerBorderView.layer.borderWidth = 0.5;
-        self.containerBorderView.layer.cornerRadius = 8.5;
-        
+//        self.containerBorderView = [UIView new];
+//        self.containerBorderView.layer.borderColor = [UIColor colorWithWhite:0 alpha:0.1].CGColor;
+//        self.containerBorderView.layer.borderWidth = 0.5;
+//        self.containerBorderView.layer.cornerRadius = 8.5;
+//        
         if (!blackArrowImage) {
             blackArrowImage = [SMCalloutBackgroundView embeddedImageNamed:@"CalloutArrow"];
             whiteArrowImage = [self image:blackArrowImage withColor:[UIColor whiteColor]];
@@ -625,16 +625,16 @@ static UIImage *blackArrowImage = nil, *whiteArrowImage = nil, *grayArrowImage =
         self.anchorMargin = 27;
         
         self.arrowView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, blackArrowImage.size.width, blackArrowImage.size.height)];
-        self.arrowView.alpha = 0.96;
+        self.arrowView.alpha = 0;
         self.arrowImageView = [[UIImageView alloc] initWithImage:whiteArrowImage];
         self.arrowHighlightedImageView = [[UIImageView alloc] initWithImage:grayArrowImage];
         self.arrowHighlightedImageView.hidden = YES;
         self.arrowBorderView = [[UIImageView alloc] initWithImage:blackArrowImage];
-        self.arrowBorderView.alpha = 0.1;
+        self.arrowBorderView.alpha = 0;
         self.arrowBorderView.frameY = 0.5;
         
         [self addSubview:self.containerView];
-        [self.containerView addSubview:self.containerBorderView];
+//        [self.containerView addSubview:self.containerBorderView];
         [self addSubview:self.arrowView];
         [self.arrowView addSubview:self.arrowBorderView];
         [self.arrowView addSubview:self.arrowImageView];
